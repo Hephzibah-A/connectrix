@@ -1,0 +1,36 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Welcome to the Dashboard</h4>
+                        </div>
+
+                        <p class="text-dark"
+                            [innerText]=" 'Hi '+ this.user.displayName+', your firebase UID is '+this.user.localId+' and your email is '+this.user.email">
+                        </p>
+                        <img [src]="this.user.profileUrl" alt="">
+
+                        <div>
+                            <div *ngFor="let post of posts">
+                                <h1 class="text-warning">{{ post.college_name }}</h1>
+                                <img style="align-items: center;"
+                                    src="https://connect-kh8w.onrender.com/profile/{{post.poster}}" width="400" alt="">
+                                <a href="{{post.registration_link}}">Register</a>
+                            </div>
+                        </div>
+
+
+                        <button type="button" class="btn btn-outline-warning text-center"
+                            (click)="logout()">Logout</button>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

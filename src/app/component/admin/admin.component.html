@@ -1,0 +1,10 @@
+<div>
+    <h1>Admin Dashboard</h1>
+    <p *ngFor="let item of urlData;let index=index">{{index+" "+item.title}}</p>
+</div>
+<div>
+    <button (click)="submit()">Get button</button>
+</div>
+<div>
+    <button (click)="logout()">logout</button>
+</div>

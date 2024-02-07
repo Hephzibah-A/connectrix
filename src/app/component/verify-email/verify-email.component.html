@@ -1,0 +1,25 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Email Verification</h4>
+                        </div>
+                        <div class="mb-3">
+                            <p class="text-muted">Link has sent to your registered email. Please verify it. </p>
+                        </div>
+                        <div class="d-grid gap-2" style="padding-top: 0px;">
+                            <button type="button" class="btn btn-outline-warning" [disabled]="!allowVerifyButton">
+                                <a href="/login" style="text-decoration: none;color: black;">Verification Complete</a>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
