@@ -1,36 +1,90 @@
-<div class="container-fluid">
-    <div class="row mt-5">
-        <div class="col"></div>
-        <div class="col-4">
-            <div class="card shadow">
-                <div class="card-body">
-                    <form>
-                        <div class="mb-3">
-                            <h4 class="text-dark text-muted">Welcome to the Dashboard</h4>
-                        </div>
+<nav class="navbar bg-body-tertiary">
+    <div class="container">
+        <p class="text-dark">Hello, {{ user.displayName }}</p>
+    </div>
+</nav>
+<div class="container-fluid justify-content-center">
+    <div class="col"></div>
+    <div class="card shadow">
+        <div class="card-body">
+            <form>
+                <div class="mb-3">
+                    <h4 class="text-dark text-muted">Welcome to the Dashboard</h4>
+                </div>
+                <input type="submit" class="btn btn-warning float-right" routerLink="/image-post" value="Image Post">
+                <br>
 
-                        <p class="text-dark"
-                            [innerText]=" 'Hi '+ this.user.displayName+', your firebase UID is '+this.user.localId+' and your email is '+this.user.email">
-                        </p>
-                        <img [src]="this.user.profileUrl" alt="">
+                <p class="text-dark">
+                    Hi {{ user.displayName }}, your firebase UID is {{ user.localId }} and your email is {{
+                    user.email }} {{ user.isEmailVerified }}
+                </p>
+                <img [src]="user.profileUrl" alt="">
 
-                        <div>
-                            <div *ngFor="let post of posts">
-                                <h1 class="text-warning">{{ post.college_name }}</h1>
-                                <img style="align-items: center;"
-                                    src="https://connect-kh8w.onrender.com/profile/{{post.poster}}" width="400" alt="">
-                                <a href="{{post.registration_link}}">Register</a>
+                <div class="row mt-3">
+                    <ng-container *ngFor="let post of posts">
+                        <div class="col-md-4 mb-3">
+                            <div class="card">
+                                <img class="card-img-top"
+                                    [src]="'https://connect-kh8w.onrender.com/profile/' + post.poster" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ post.college_name }}</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and
+                                        make up the bulk of the card's content.</p>
+                                    <a [href]="post.registration_link" class="btn btn-primary">Register</a>
+                                </div>
                             </div>
                         </div>
-
-
-                        <button type="button" class="btn btn-outline-warning text-center"
-                            (click)="logout()">Logout</button>
-
-                    </form>
+                    </ng-container>
                 </div>
-            </div>
+
+
+            </form>
         </div>
-        <div class="col"></div>
     </div>
 </div>
+<div class="col"></div>
+
+<!-- Sticky yellow post button -->
+<div class="post-button" style="align-items: center;" routerLink="/image-post">
+    <button class=" btn btn-warning rounded-circle position-fixed bottom-0 end-0 mb-4 me-4"
+        style="width: 60px; height: 60px;align-items: center;">
+        <svg xmlns="http://www.w3.org/2000/svg" width="35" height="50" fill="white" class="bi bi-plus"
+            viewBox="0 0 16 16">
+            <path
+                d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
+        </svg>
+    </button>
+</div>
+<br>
+<br>
+<div class="container-fluid justify-content-center">
+    <button type="button" class="btn btn-outline-warning text-center" (click)="logout()">Logout</button>
+</div>
+<br>
+<!-- <footer class="footer bg-warning">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <h5>Download Our App</h5>
+                <a href="#" class="btn btn-dark">Google Play Store</a>
+            </div>
+            <div class="col-md-6">
+                <h5>Contact Us</h5>
+                <p>Salem, Tamil Nadu, India</p>
+                <p>+91 9629881800</p>
+                <p>gohetrix&#64;gmail.com</p>
+            </div>
+        </div>
+    </div>
+</footer> -->
+
+<footer class="py-3 my-4 ">
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Features</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Pricing</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">FAQs</a></li>
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">About</a></li>
+    </ul>
+    <p class="text-center text-body-secondary">© 2024, Connektorz</p>
+</footer>

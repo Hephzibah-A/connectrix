@@ -1,0 +1,249 @@
+<div class="container-fluid justify-content-center">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form class="register-form" [formGroup]="myForm" (submit)="uploadImage($event)" noValidate>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Image Form</h4>
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="exampleInputEmail1" class="form-label">Name </label>
+                            <input type="text" class="form-control" name="user_name" formControlName="user_name">
+                            <!-- <span class="text-danger" *ngIf="this.submit&&name.errors?.['required']">CollegeName is
+                                Required</span> -->
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="exampleInputEmail1" class="form-label">Email </label>
+                            <input type="email" class="form-control" name="email" formControlName="email" required>
+                            <!-- <span class="text-danger" *ngIf="this.submit&&email.errors?.['required']">Email is
+                                required</span> -->
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="exampleInputEmail1" class="form-label">Country </label>
+                            <input type="text" class="form-control" name="country" formControlName="country" required>
+                            <!-- <span class="text-danger" *ngIf="this.submit&&country.errors?.['required']">Country is
+                                required</span> -->
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="exampleInputEmail1" class="form-label">State </label>
+                            <input type="text" class="form-control" name="state" formControlName="state" required>
+                            <!-- <span class="text-danger" *ngIf="this.submit&&state.errors?.['required']">State is
+                                required</span> -->
+                        </div>
+                        <div class="mb-3 form-group">
+                            <label for="exampleInputEmail1" class="form-label">City </label>
+                            <input type="text" class="form-control" name="city" formControlName="city" required>
+                            <!-- <span class="text-danger" *ngIf="this.submit&&city.errors?.['required']">City is
+                                required</span> -->
+                        </div>
+                        <div class="mb-3 form-group">
+                            <div class="mb-3 form-group">
+                                <label for="exampleInputEmail1" class="form-label">Profile Image </label>
+                                <input type="file" class="form-control" (change)="onFileSelected($event)" name="image"
+                                    accept="image/*" required>
+                            </div>
+                            <button type="submit" class="btn btn-outline-warning text-center">Post</button>
+                            <!-- <span class="text-danger" *ngIf="this.submit&&city.errors?.['required']">City is
+                                required</span> -->
+                        </div>
+                        <!-- <div class="mb-3 form-group" *ngIf="this.errorMessage">
+                            <span class="text-danger">
+                                <p [innerText]="this.errorMessage"></p>
+                            </span>
+                        </div>
+                        <div class="text-center" *ngIf="this.loading">
+                            <div class="spinner-border text-warning" role="status">
+                                <span class="sr-only visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        <br> -->
+                        <!-- <div class="d-grid gap-2 ">
+                            <input type="submit" class="btn btn-warning float-right" value="Register">
+                        </div> -->
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

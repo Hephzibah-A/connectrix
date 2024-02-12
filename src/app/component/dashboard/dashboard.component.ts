@@ -14,12 +14,13 @@ export class DashboardComponent implements OnInit {
 
   posts: any[] = [];
 
-  user = { localId: "", displayName: "", email: "", profileUrl: "" }
+  public user = { localId: "", displayName: "", email: "", profileUrl: "", isEmailVerified: false }
 
 
   constructor(private auth: AuthService, private postService: PostService) { }
 
   ngOnInit(): void {
+
     this.auth.canAccess();
 
     if (this.auth.isAuthenticated()) {
@@ -30,6 +31,7 @@ export class DashboardComponent implements OnInit {
           this.user.displayName = data.users[0].displayName;
           this.user.email = data.users[0].email;
           this.user.profileUrl = data.users[0].photoUrl;
+          this.user.isEmailVerified = data.users[0].emailVerified;
         }
       })
     }
@@ -44,6 +46,7 @@ export class DashboardComponent implements OnInit {
   logout() {
     this.auth.logout();
   }
+
 
 
 }

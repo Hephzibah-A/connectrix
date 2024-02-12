@@ -10,21 +10,17 @@ export class PostService {
   //  https://connect-kh8w.onrender.com/poster/getposter
   private posterUrl = 'https://connect-kh8w.onrender.com/poster';
   private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private url = 'https://connect-kh8w.onrender.com/login/registration';
 
   constructor(private http: HttpClient) { }
-
-
-
-  // detail() {
-  //   let token = sessionStorage.getItem('token');
-
-  //   return this.http.post<{ users: Array<{ localId: string, displayName: string }> }>(
-  //     'https://identitytoolkit.googleapis.com/v1/accounts:lookup?key=AIzaSyBRUwKqauplMTlHl4cckXzuIYuXsVkbd-4',
-  //     { idToken: token }
-  //   );
-  // }
 
   getPosts(): Observable<any> {
     return this.http.get<any[]>(`${this.posterUrl}/getposter`);
   }
+
+  postMethod(data: any): Observable<any> {
+
+    return this.http.post<any>(this.url, data);
+  }
 }
+

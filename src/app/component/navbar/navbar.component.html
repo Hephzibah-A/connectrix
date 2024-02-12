@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-warning">
     <a class="navbar-brand" href="javascript:void(0);" routerLink="/"
-        style="color: black; padding-left: 20px;">Connectrix</a>
+        style="color: black; padding-left: 20px;">Connektorz</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -8,7 +8,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
 
-            <ng-container *ngIf="this.auth.isAuthenticated();then authenticated;else notAuthenticated">
+            <ng-container *ngIf="(this.auth.isAuthenticated());then authenticated ;else notAuthenticated">
 
             </ng-container>
 
@@ -22,6 +22,10 @@
             <ng-template #authenticated>
                 <li class="nav-item"><a href="javascript:void(0);" routerLink="/dashboard"
                         class="nav-link">Dashboard</a></li>
+
+                <li class="nav-item"><a href="javascript:void(0);" *ngIf="isadmin" routerLink="/user"
+                        class="nav-link">User</a>
+                </li>
 
                 <li class="nav-item dropdown ">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -39,10 +43,8 @@
                                     <path fill-rule="evenodd"
                                         d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                                 </svg> Logout</a></li>
-
                     </ul>
                 </li>
-
             </ng-template>
 
         </ul>

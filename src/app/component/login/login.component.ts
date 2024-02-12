@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -17,11 +18,16 @@ export class LoginComponent implements OnInit {
   userpassword: any;
   personalData: any;
 
-  constructor(private auth: AuthService, private form: FormBuilder, private http: HttpClient, private route: Router) { }
-  formdata = { email: "", password: "" };
+  constructor(private auth: AuthService, private builder: FormBuilder, private http: HttpClient, private route: Router, private toastr: ToastrService) { }
+  loginform = this.builder.group({
+    email: this.builder.control('', Validators.required),
+    password: this.builder.control('', Validators.required)
+  });
   submit = false;
   errorMessage = "";
   loading = false;
+  public user = { localId: "", displayName: "", email: "", profileUrl: "", idTokenurl: " " }
+
 
   ngOnInit(): void {
     this.auth.canAuthenticate();
@@ -32,14 +38,31 @@ export class LoginComponent implements OnInit {
     this.loading = true;
 
     //call register service
-    this.auth.login(this.formdata.email, this.formdata.password).subscribe({
+    this.auth.login(this.loginform.value.email!, this.loginform.value.password!).subscribe({
       next: data => {
         //store token
         this.auth.storeToken(data.idToken);
+
         console.log("user token " + data.idToken);
-        this.route.navigate(['/dashboard']);
+        this.user.idTokenurl = data.idToken;
+
+        this.route.navigate(['/verify-email']);
+        this.toastr.success('Verify your email address');
+        if (this.auth.isAuthenticated()) {
+          this.auth.detail().subscribe({
+            next: data => {
+              this.user.localId = data.users[0].localId;
+              this.user.displayName = data.users[0].displayName;
+              this.user.email = data.users[0].email;
+              this.user.profileUrl = data.users[0].photoUrl;
+              this.toastr.success('Welcome ' + this.user.displayName + ' Login Successful');
+            }
+          });
+        }
+
       },
       error: data => {
+        this.toastr.error('Invalid credentials');
         if (data.error.error.message == "INVALID_PASSWORD") {
           this.errorMessage = "Invalid Password";
         } else if (data.error.error.message == "INVALID_EMAIL") {

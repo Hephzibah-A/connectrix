@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { MatIcon } from '@angular/material/icon';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,8 +10,23 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public auth: AuthService) {
+  isadmin = false;
+  isMenuRequired = false;
+  constructor(private router: Router, public auth: AuthService) {
 
+
+  }
+
+
+  ngDoCheck(): void {
+    let role = sessionStorage.getItem('role');
+    let currenturl = this.router.url;
+    if ((currenturl == '/login' || currenturl == '/register')) {
+      this.isMenuRequired = false;
+    }
+    else {
+      this.isMenuRequired = true;
+    }
   }
 
   user = { localId: "", displayName: "", email: "", profileUrl: "" }
@@ -33,10 +49,15 @@ export class NavbarComponent implements OnInit {
           this.user.email = data.users[0].email;
           this.user.profileUrl = data.users[0].photoUrl;
         }
-      })
+      });
+      let role = sessionStorage.getItem('role');
+      if (role == 'admin') {
+        this.isadmin = true;
+      }
+      else {
+
+        this.isadmin = false;
+      }
     }
-
-
   }
-
 }
