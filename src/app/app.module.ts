@@ -32,6 +32,7 @@ import { UpdatepopupComponent } from './component/updatepopup/updatepopup.compon
 import { ImagePostComponent } from './component/image-post/image-post.component';
 import { MaterialModule } from '../material.module';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
+import { SideBarComponent } from './component/side-bar/side-bar.component';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { VerifyEmailComponent } from './component/verify-email/verify-email.comp
     UpdatepopupComponent,
     ImagePostComponent,
     VerifyEmailComponent,
+    SideBarComponent,
 
 
   ],
