@@ -33,6 +33,8 @@ import { ImagePostComponent } from './component/image-post/image-post.component'
 import { MaterialModule } from '../material.module';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
+import { AddPostsComponent } from './component/add-posts/add-posts.component';
+
 
 
 @NgModule({
@@ -48,6 +50,7 @@ import { SideBarComponent } from './component/side-bar/side-bar.component';
     ImagePostComponent,
     VerifyEmailComponent,
     SideBarComponent,
+    AddPostsComponent
 
 
   ],

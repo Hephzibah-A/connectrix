@@ -10,6 +10,7 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { UserlistingComponent } from './component/userlisting/userlisting.component';
 import { ImagePostComponent } from './component/image-post/image-post.component';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
+import { AddPostsComponent } from './component/add-posts/add-posts.component';
 
 
 const routes: Routes = [
@@ -20,7 +21,8 @@ const routes: Routes = [
     { path: 'admin', component: AdminComponent },
     { path: 'user', component: UserlistingComponent, canActivate: [AuthGuard] },
     { path: 'image-post', component: ImagePostComponent },
-    { path: 'verify-email', component: VerifyEmailComponent }
+    { path: 'verify-email', component: VerifyEmailComponent },
+    { path: 'add-post', component: AddPostsComponent }
 
 ];
 
