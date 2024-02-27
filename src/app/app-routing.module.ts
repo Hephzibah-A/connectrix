@@ -11,18 +11,20 @@ import { UserlistingComponent } from './component/userlisting/userlisting.compon
 import { ImagePostComponent } from './component/image-post/image-post.component';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 import { AddPostsComponent } from './component/add-posts/add-posts.component';
+import { SideBarComponent } from './component/side-bar/side-bar.component';
 
 
 const routes: Routes = [
     { path: '', component: LoginComponent, canActivate: [AuthGuard] },
     { path: 'login', component: LoginComponent },
-    { path: 'register', component: RegisterComponent },
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
+    { path: 'register', component: RegisterComponent, canActivate: [AuthGuard] },
+    { path: 'dashboard', component: SideBarComponent, canActivate: [AuthGuard] },
     { path: 'admin', component: AdminComponent },
     { path: 'user', component: UserlistingComponent, canActivate: [AuthGuard] },
     { path: 'image-post', component: ImagePostComponent },
     { path: 'verify-email', component: VerifyEmailComponent },
-    { path: 'add-post', component: AddPostsComponent }
+    { path: 'add-post', component: AddPostsComponent },
+    { path: 'user-dashboard', component: UserlistingComponent }
 
 ];
 

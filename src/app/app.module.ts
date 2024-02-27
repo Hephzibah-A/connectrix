@@ -34,6 +34,7 @@ import { MaterialModule } from '../material.module';
 import { VerifyEmailComponent } from './component/verify-email/verify-email.component';
 import { SideBarComponent } from './component/side-bar/side-bar.component';
 import { AddPostsComponent } from './component/add-posts/add-posts.component';
+import { UserDashboardComponent } from './component/user-dashboard/user-dashboard.component';
 
 
 
@@ -50,7 +51,8 @@ import { AddPostsComponent } from './component/add-posts/add-posts.component';
     ImagePostComponent,
     VerifyEmailComponent,
     SideBarComponent,
-    AddPostsComponent
+    AddPostsComponent,
+    UserDashboardComponent
 
 
   ],

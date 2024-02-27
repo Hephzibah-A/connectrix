@@ -33,7 +33,7 @@
               "@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": ["src/app/sidebar.js"],
             "server": "src/main.server.ts",
             "prerender": true,
             "ssr": {
